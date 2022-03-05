@@ -1,24 +1,41 @@
-# vue3-autocomplete
+# vue-3 autocomplete
 
-## Project setup
-```
+Simple custom autocomplete component developed using Vue 3 composition API, Vuex, and Jest for unit testing.
+
+## Installation
+
+Use npm to install packages.
+
+```bash
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
+## Development
+
+Use the following command to run the dev server.
+
+```bash
 npm run serve
 ```
 
-### Compiles and minifies for production
+## Testing
+
+Use the following command to run unit tests.
+
+```bash
+npm run test:unit
 ```
+
+## Production
+
+Use the following command to compile and minify the project.
+
+```bash
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Notes
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
