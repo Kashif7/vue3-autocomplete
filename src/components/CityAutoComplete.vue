@@ -11,13 +11,11 @@ const searchQuery = ref("San");
 const filteredCities = computed(() =>
   store.getters.queryStringDataArray("cities", searchQuery.value)
 );
-
-console.log("filteredCities", filteredCities.value);
 </script>
 
 <template>
   <h1>Cities</h1>
-  <AutoComplete />
+  <AutoComplete v-model="searchQuery" :items="filteredCities" />
 </template>
 
 <style scoped>
