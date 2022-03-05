@@ -6,7 +6,7 @@ import AutoComplete from "./AutoComplete.vue";
 
 const store = useStore();
 
-const searchQuery = ref("San");
+const searchQuery = ref("");
 
 const filteredCities = computed(() =>
   store.getters.queryStringDataArray("cities", searchQuery.value)

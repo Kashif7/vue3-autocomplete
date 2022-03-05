@@ -8,7 +8,9 @@ const store = useStore();
 const searchQuery = ref("");
 
 const filteredBooks = computed(() =>
-  store.getters.queryObjectDataArray("books", "title", searchQuery.value)
+  store.getters
+    .queryObjectDataArray("books", "title", searchQuery.value)
+    .map(({ title, author }) => `${title} - ${author}`)
 );
 </script>
 
