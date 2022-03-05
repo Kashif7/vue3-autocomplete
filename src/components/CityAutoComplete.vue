@@ -9,7 +9,7 @@ const store = useStore();
 const searchQuery = ref("");
 
 const filteredCities = computed(() =>
-  store.getters.queryStringDataArray("cities", searchQuery.value)
+  store.getters.queryStringArray("cities", searchQuery.value)
 );
 </script>
 
