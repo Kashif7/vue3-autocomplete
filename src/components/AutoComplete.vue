@@ -1,5 +1,7 @@
+
 <script setup>
 import { defineProps, defineEmits } from "vue";
+import { vFocus } from "../directives/vFocus";
 
 defineProps({
   focusOnLoad: String,
@@ -12,7 +14,9 @@ defineEmits(["update:modelValue"]);
 
 <template>
   <div>
-    <input id="search" type="text" />
+    <input id="search" type="text" v-if="focusOnLoad" v-focus />
+    <!-- Contrived to demostrate directive functionality -->
+    <input id="search" type="text" v-else v-focus.prevent />
   </div>
   <div id="list-container" class="list-container">
     <label id="validation-message"> Enter at least 3 characters. </label>
