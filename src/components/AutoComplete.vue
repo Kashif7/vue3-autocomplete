@@ -1,4 +1,13 @@
 <script setup>
+import { defineProps, defineEmits } from "vue";
+
+defineProps({
+  focusOnLoad: String,
+  modelValue: String,
+  items: Array,
+});
+
+defineEmits(["update:modelValue"]);
 </script>
 
 <template>
