@@ -22,7 +22,7 @@ describe("AutoComplete.vue", () => {
   });
 
   it("a text input with less than three characters displays a validation message", () => {
-    const modelValue = ref("Do");
+    const modelValue = ref("Sa");
 
     const wrapper = shallowMount(AutoComplete, {
       props: {
@@ -39,9 +39,9 @@ describe("AutoComplete.vue", () => {
   });
 
   it("a text input with more than two characters with matching results displays a list", () => {
-    const modelValue = ref("Don");
+    const modelValue = ref("San");
     const filteredItems = cities.filter((city) =>
-      city.includes(modelValue.value)
+      city.toLowerCase().includes(modelValue.value.toLowerCase())
     );
 
     const wrapper = shallowMount(AutoComplete, {
@@ -53,7 +53,7 @@ describe("AutoComplete.vue", () => {
       attachTo: document.body,
     });
 
-    const listItems = wrapper.findAll("li").length;
+    const listItems = wrapper.findAll("li");
 
     expect(listItems.length).toBe(filteredItems.length);
   });
