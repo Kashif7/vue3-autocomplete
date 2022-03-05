@@ -1,33 +1,52 @@
 
 <script setup>
-import { defineProps, defineEmits } from "vue";
+import { defineProps, defineEmits, computed } from "vue";
 import { vFocus } from "../directives/vFocus";
 
-defineProps({
+const props = defineProps({
   focusOnLoad: String,
   modelValue: String,
   items: Array,
 });
 
 defineEmits(["update:modelValue"]);
+
+const showValidationMessage = computed(() => props.modelValue.length < 3);
+const showResultsList = computed(
+  () => props.modelValue.length > 2 && !!props.items.length
+);
 </script>
 
 <template>
   <div>
-    <input id="search" type="text" v-if="focusOnLoad" v-focus />
+    <input
+      id="search"
+      type="text"
+      v-if="focusOnLoad"
+      v-focus
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
+    />
     <!-- Contrived to demostrate directive functionality -->
-    <input id="search" type="text" v-else v-focus.prevent />
+    <input
+      id="search"
+      type="text"
+      v-else
+      v-focus.prevent
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
+    />
   </div>
   <div id="list-container" class="list-container">
-    <label id="validation-message"> Enter at least 3 characters. </label>
+    <label id="validation-message" v-if="showValidationMessage">
+      Enter at least 3 characters.
+    </label>
 
-    <ul id="results-list">
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
+    <ul id="results-list" v-else-if="showResultsList">
+      <li v-for="item in items" :key="item">{{ item }}</li>
     </ul>
 
-    <label id="no-results-message"> No matching results found. </label>
+    <label id="no-results-message" v-else> No matching results found. </label>
   </div>
 </template>
 
@@ -45,8 +64,12 @@ input[type="text"] {
   width: 50%;
 }
 
-.list-container {
-  padding-left: 31%;
-  width: fit-content;
+ul {
+  list-style-position: inside;
+  padding-left: 25%;
+}
+
+li {
+  text-align: left;
 }
 </style>
