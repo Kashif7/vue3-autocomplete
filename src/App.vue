@@ -1,16 +1,21 @@
 <script setup>
 import BookAutoComplete from "./components/BookAutoComplete.vue";
 import CityAutoComplete from "./components/CityAutoComplete.vue";
+import ErrorBoundary from "./components/ErrorBoundary.vue";
 </script>
 
 <template>
   <div class="container">
     <div class="row">
       <div class="column">
-        <BookAutoComplete />
+        <ErrorBoundary stopPropagation="true">
+          <BookAutoComplete />
+        </ErrorBoundary>
       </div>
       <div class="column">
-        <CityAutoComplete />
+        <ErrorBoundary stopPropagation="true">
+          <CityAutoComplete />
+        </ErrorBoundary>
       </div>
     </div>
   </div>
