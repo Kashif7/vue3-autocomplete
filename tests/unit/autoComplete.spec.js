@@ -9,7 +9,7 @@ describe("AutoComplete.vue", () => {
 
     const wrapper = shallowMount(AutoComplete, {
       props: {
-        focusOnLoad: "true",
+        focusOnLoad: true,
         modelValue,
         items: [],
       },
@@ -26,7 +26,7 @@ describe("AutoComplete.vue", () => {
 
     const wrapper = shallowMount(AutoComplete, {
       props: {
-        focusOnLoad: "true",
+        focusOnLoad: true,
         modelValue,
         items: cities.filter((city) => city.includes(modelValue.value)),
       },
@@ -46,7 +46,7 @@ describe("AutoComplete.vue", () => {
 
     const wrapper = shallowMount(AutoComplete, {
       props: {
-        focusOnLoad: "true",
+        focusOnLoad: true,
         modelValue,
         items: filteredItems,
       },
@@ -66,7 +66,7 @@ describe("AutoComplete.vue", () => {
 
     const wrapper = shallowMount(AutoComplete, {
       props: {
-        focusOnLoad: "true",
+        focusOnLoad: true,
         modelValue,
         items: filteredItems,
       },
