@@ -1,6 +1,5 @@
-//Directive to trigger focus to an element based on a passed value
-//usage v-focus="true" case insensitive
-//
+//Directive to focus on an element
+//usage <input v-focus />
 export const vFocus = {
   mounted: (el, binding) => {
     if ("prevent" in binding.modifiers) {

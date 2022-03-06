@@ -27,12 +27,10 @@ const showResultsList = computed(
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
     />
-    <!-- Contrived to demostrate directive functionality -->
     <input
       id="search"
       type="text"
       v-else
-      v-focus.prevent
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
     />
