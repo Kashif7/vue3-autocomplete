@@ -8,9 +8,11 @@ const store = useStore();
 const searchQuery = ref("");
 
 const filteredBooks = computed(() =>
-  store.getters
-    .queryObjectArray("books", "title", searchQuery.value)
-    .map(({ title, author }) => `${title} - ${author}`)
+  store.getters.queryObjectArray("books", "title", searchQuery.value)
+);
+
+const filteredBookTitles = computed(() =>
+  filteredBooks.value.map(({ title, author }) => `${title} - ${author}`)
 );
 </script>
 
@@ -19,7 +21,7 @@ const filteredBooks = computed(() =>
   <AutoComplete
     :focus-on-load="true"
     v-model="searchQuery"
-    :items="filteredBooks"
+    :items="filteredBookTitles"
   />
 </template>
 
