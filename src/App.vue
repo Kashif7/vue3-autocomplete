@@ -1,6 +1,6 @@
 <script setup>
-import BookAutoComplete from "./components/BookAutoComplete.vue";
-import CityAutoComplete from "./components/CityAutoComplete.vue";
+import AutoCompleteBook from "./components/AutoCompleteBook.vue";
+import AutoCompleteCity from "./components/AutoCompleteCity.vue";
 import ErrorBoundary from "./components/ErrorBoundary.vue";
 </script>
 
@@ -9,12 +9,12 @@ import ErrorBoundary from "./components/ErrorBoundary.vue";
     <div class="row">
       <div class="column">
         <ErrorBoundary stopPropagation="true">
-          <BookAutoComplete />
+          <AutoCompleteBook />
         </ErrorBoundary>
       </div>
       <div class="column">
         <ErrorBoundary stopPropagation="true">
-          <CityAutoComplete />
+          <AutoCompleteCity />
         </ErrorBoundary>
       </div>
     </div>
