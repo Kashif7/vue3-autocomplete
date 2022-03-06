@@ -4,7 +4,7 @@ import { defineProps, defineEmits, computed } from "vue";
 import { vFocus } from "../directives/vFocus";
 
 const props = defineProps({
-  focusOnLoad: String,
+  focusOnLoad: Boolean,
   modelValue: String,
   items: Array,
 });

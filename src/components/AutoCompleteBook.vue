@@ -17,7 +17,7 @@ const filteredBooks = computed(() =>
 <template>
   <h1>Books</h1>
   <AutoComplete
-    focusOnLoad="true"
+    :focus-on-load="true"
     v-model="searchQuery"
     :items="filteredBooks"
   />
