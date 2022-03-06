@@ -8,12 +8,12 @@ import ErrorBoundary from "./components/ErrorBoundary.vue";
   <div class="container">
     <div class="row">
       <div class="column">
-        <ErrorBoundary stopPropagation="true">
+        <ErrorBoundary :stop-propagation="true">
           <AutoCompleteBook />
         </ErrorBoundary>
       </div>
       <div class="column">
-        <ErrorBoundary stopPropagation="true">
+        <ErrorBoundary :stop-propagation="true">
           <AutoCompleteCity />
         </ErrorBoundary>
       </div>
