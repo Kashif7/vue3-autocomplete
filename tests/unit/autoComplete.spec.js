@@ -21,7 +21,7 @@ describe("AutoComplete.vue", () => {
     expect(searchBox).toBe(document.activeElement);
   });
 
-  it("a text input with less than three characters displays a validation message", () => {
+  it("a text input with less characters than the minimum character limit displays a validation message", () => {
     const modelValue = ref("Sa");
 
     const wrapper = shallowMount(AutoComplete, {
@@ -35,10 +35,10 @@ describe("AutoComplete.vue", () => {
 
     const validationMessageLabel = wrapper.find("#validation-message");
 
-    expect(validationMessageLabel.exists()).toBeTruthy();
+    expect(validationMessageLabel.text()).toBe("Enter at least 3 characters.");
   });
 
-  it("a text input with more than two characters with matching results displays a list", () => {
+  it("a text input with more or equal no of characters than the minimum character limit with matching results displays a list", () => {
     const modelValue = ref("San");
     const filteredItems = cities.filter((city) =>
       city.toLowerCase().includes(modelValue.value.toLowerCase())
@@ -58,7 +58,7 @@ describe("AutoComplete.vue", () => {
     expect(listItems.length).toBe(filteredItems.length);
   });
 
-  it("a text input with more than two characters with no matching results will display a message", () => {
+  it("a text input with more or equal no of characters than the minimum character limit with no matching results will display a message", () => {
     const modelValue = ref("Donx");
     const filteredItems = cities.filter((city) =>
       city.includes(modelValue.value)
@@ -75,6 +75,6 @@ describe("AutoComplete.vue", () => {
 
     const noResultsMessageLabel = wrapper.find("#no-results-message");
 
-    expect(noResultsMessageLabel.exists()).toBeTruthy();
+    expect(noResultsMessageLabel.text()).toBe("No matching results found.");
   });
 });
