@@ -5,15 +5,20 @@ import { vFocus } from "../directives/vFocus";
 
 const props = defineProps({
   focusOnLoad: String,
+  minCharacterLimit: Number,
   modelValue: String,
   items: Array,
 });
 
 defineEmits(["update:modelValue"]);
 
-const showValidationMessage = computed(() => props.modelValue.length < 3);
+const minCharacterLimit = computed(() => props.minCharacterLimit ?? 3);
+const showValidationMessage = computed(
+  () => props.modelValue.length < minCharacterLimit.value
+);
 const showResultsList = computed(
-  () => props.modelValue.length > 2 && !!props.items.length
+  () =>
+    props.modelValue.length >= minCharacterLimit.value && !!props.items.length
 );
 </script>
 
@@ -39,14 +44,14 @@ const showResultsList = computed(
   </div>
   <div id="list-container" class="list-container">
     <label id="validation-message" v-if="showValidationMessage">
-      Enter at least 3 characters.
+      Enter at least {{ minCharacterLimit }} characters.
     </label>
 
     <ul id="results-list" v-else-if="showResultsList">
       <li v-for="item in items" :key="item">{{ item }}</li>
     </ul>
 
-    <label id="no-results-message" v-else> No matching results found. </label>
+    <label id="no-results-message" v-else> No matching results found.</label>
   </div>
 </template>
 
