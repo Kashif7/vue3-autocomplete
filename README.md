@@ -36,6 +36,11 @@ npm run build
 
 ## Notes
 
+- Though composition API is powerful and versatile, the support on web pails in comparison to options API.
+- Custom directives help in increasing reusability.
+- Logic in BookAutoComplete and CityAutoComplete components could be encapsulated to a composable but I opted against it because it seemed contrived.
+- @vue/test-utils does not provide a way to manipulate ref state in a composition API SFC yet.
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
